@@ -1,0 +1,48 @@
+:root{
+  --dark-purple:#2f3061;
+  --gray-blue:#6ca6c1;
+  --yellow:#ffe66d;
+  --jet:#343434;
+  --light:#f7fff1;
+}
+body {
+  margin: 0;
+  font-family: 'Oswald', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:var(--dark-purple) !important;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.form{
+  width:60%;
+  background:
+  radial-gradient(circle farthest-side at 0% 50%,var(--dark) 23.5%,rgba(240,166,17,0) 0)21px 30px,
+  radial-gradient(circle farthest-side at 0% 50%,var(--dark-green) 24%,rgba(240,166,17,0) 0)19px 30px,
+  linear-gradient(var(--dark) 14%,rgba(240,166,17,0) 0, rgba(240,166,17,0) 85%,var(--dark) 0)0 0,
+  linear-gradient(150deg,var(--dark) 24%,var(--dark-green) 0,var(--dark-green) 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,var(--dark-green) 0,var(--dark-green) 76%,var(--dark) 0)0 0,
+  linear-gradient(30deg,var(--dark) 24%,var(--dark-green) 0,var(--dark-green) 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,var(--dark-green) 0,var(--dark-green) 76%,var(--dark) 0)0 0,
+  linear-gradient(90deg,var(--dark-green) 2%,var(--dark) 0,var(--dark) 98%,var(--dark-green) 0%)0 0 var(--dark);
+  background-size:40px 60px;
+}
+.bg-gr{
+  background-color: var(--light-green);
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+button{
+  cursor: pointer;
+}
+.particles{
+  position: fixed;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
