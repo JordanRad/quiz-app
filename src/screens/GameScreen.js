@@ -4,78 +4,11 @@ import 'tachyons';
 import Partciles from 'react-particles-js';
 import Heading from './components/Heading';
 import axios from 'axios';
+import Helper from './components/Helper';
+import particlesOptions from './components/particlesOptions';
+import Loader from './components/Loader';
+import history from './../services/history';
 
-const particlesOptions = {
-  "particles": {
-    "number": {
-      "value": 180,
-      "density": {
-        "enable": true,
-        "value_area": 1803.4120608655228
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 2,
-        "color": "#ffe66d"
-      },
-      "polygon": {
-        "nb_sides": 4
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.4008530152163807,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 1.5,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 0,
-      "color": "#ffffff",
-      "opacity": 0.3687847739990702,
-      "width": 0.6413648243462091
-    },
-    "move": {
-      "enable": true,
-      "speed": 6,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-
-  }
-}
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -94,69 +27,124 @@ function shuffle(array) {
 
   return array;
 }
-class App extends React.Component {
+class GameScreen extends React.Component {
   constructor() {
     super();
-
     this.state = {
       isActive: true,
       questions: [],
-      currentQuestion: 0
+      currentQuestion: 0,
+      currentAnswers: [],
+      half_disabled: false,
+      phone_a_friend_disabled: false,
+      ask_the_audience_disabled: false,
+      half_answers: false
     }
+    this.Validate = this.Validate.bind(this);
+    this.PhoneAFriend = this.PhoneAFriend.bind(this);
+    this.AskTheAudience = this.AskTheAudience.bind(this);
+    this.Half = this.Half.bind(this);
   }
   componentDidMount() {
     let arr = [];
     axios.all([
-      axios.get('https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple'),
-      axios.get('https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple'),
-      axios.get('https://opentdb.com/api.php?amount=5&difficulty=hard&type=multiple'),
+      axios.get('https://opentdb.com/api.php?amount=4&difficulty=easy&type=multiple'),
+      axios.get('https://opentdb.com/api.php?amount=3&difficulty=medium&type=multiple'),
+      axios.get('https://opentdb.com/api.php?amount=3&difficulty=hard&type=multiple'),
     ]).then((response) => {
       //console.log(response[0].data.results)
       let arr1 = response[0].data.results;
       let arr2 = response[1].data.results;
       let arr3 = response[2].data.results;
       arr = arr.concat(arr1, arr2, arr3)
-      this.setState({questions:arr})
+      this.setState({ questions: arr })
     })
   }
+  PhoneAFriend() {
+    this.setState({ phone_a_friend_disabled: true })
+    alert(this.state.questions[this.state.currentQuestion].correct_answer);
+  }
+  Half() {
+    this.setState({ half_disabled: true })
+    this.setState({ half_answers: true })
+  }
+  AskTheAudience() {
+    this.setState({ ask_the_audience_disabled: true })
+    alert(this.state.questions[this.state.currentQuestion].correct_answer);
+  }
+  Validate(e) {
+    this.setState({ half_answers: false })
+    if (this.state.currentQuestion === 9 && this.state.questions[this.state.currentQuestion].correct_answer === e.target.innerHTML) {
+      alert("Yoy win the game")
+      history.push('./')
+    }
+    console.log(this.state.questions[this.state.currentQuestion]);
+    if (this.state.questions[this.state.currentQuestion].correct_answer === e.target.innerHTML) {
+      //console.log("right")
+      this.setState({ currentQuestion: this.state.currentQuestion + 1 })
+    } else {
+      //console.log("wrong");
+      alert(`Sorry, You failed at question number : ${this.state.currentQuestion + 1}`)
+      history.push("./")
+    }
+  }
 
-  loadCurrentQuestion() {
-    let q = this.state.questions[this.state.currentQuestion]
-    return q;
-  }
-  
- loadAnswers(){
-    let q =  this.loadCurrentQuestion();
-    let arr = [];
-    arr.push(q.correct_answer)
-    let result = arr.concat(q.incorrect_answers);
-    shuffle(result)
-    return result;
-  }
   render() {
-    console.log(this.state.questions.length===0?"no":this.state.questions)
-    console.log(this.state.questions.length===0?"no":this.loadAnswers())
-    return (
+    if (this.state.questions.length !== 0) {
+      let currentQ = this.state.questions[this.state.currentQuestion];
+      let AnswersComponent;
+      let answers = [];
+      if (this.state.half_answers === false) {
+        //let currentQ = this.state.questions[this.state.currentQuestion];
+        answers = shuffle(currentQ.incorrect_answers.concat(currentQ.correct_answer));
+        //AnswersComponent = answers.map((el, i) => <button key={i} onClick={this.Validate} className="btn btn-primary m-2">{el}</button>)
+        console.log(currentQ.correct_answer);
+      } else {
+        // let currentQ = this.state.questions[this.state.currentQuestion];
+        answers.push(currentQ.correct_answer);
+        answers.push(currentQ.incorrect_answers[0])
+        //AnswersComponent = answers.map((el, i) => <button key={i} onClick={this.Validate} className="btn btn-primary m-2">{el}</button>)
+        console.log(currentQ.correct_answer);
+        //this.setState({half_answers:false})
+      }
+      AnswersComponent = answers.map((el, i) => <button key={i} onClick={this.Validate} className="btn btn-yellow m-2">{el}</button>)
+      return (
+        <div className="App">
+          <Partciles
+            className="particles"
+            params={particlesOptions}
+          />
+          <Heading />
+          <div className="container-fluid row mt-2 m-0 justify-content-center">
+            <div className="m-4 br-4 box p-1 col-4">
+              <Helper
+                handle={this.Half}
+                content="50/50"
+                disabled={this.state.half_disabled} />
 
-      <div className="App">
-        
-        <Partciles
-          className="particles"
-          params={particlesOptions}
-        />
+              <Helper
+                handle={this.PhoneAFriend}
+                content="Phone a friend"
+                disabled={this.state.phone_a_friend_disabled} />
 
-        <Heading />
-        <div className="f2 white">
-          {this.state.questions.length!==15 ? "Loading..." : this.loadCurrentQuestion().question}
+              <Helper
+                handle={this.AskTheAudience}
+                content="Ask the audience"
+                disabled={this.state.ask_the_audience_disabled} />
+            </div>
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: currentQ.question }} className="f2 white m-3">
+          </div>
+          <div className="mt-3">
+            {AnswersComponent}
+          </div>
         </div>
-        <div className="">
-          <button className="btn btn-primary">{this.state.questions.length!==15 ? "Loading..." : this.loadAnswers()[0]}</button>
-          <button className="btn btn-primary">{this.state.questions.length!==15 ? "Loading..." : this.loadAnswers()[1]}</button>
-          <button className="btn btn-primary">{this.state.questions.length!==15 ? "Loading..." : this.loadAnswers()[2]}</button>
-          <button className="btn btn-primary">{this.state.questions.length!==15 ? "Loading..." : this.loadAnswers()[3]}</button>
-        </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <Loader />
+      );
+    }
   }
 }
-export default App;
+export default GameScreen;

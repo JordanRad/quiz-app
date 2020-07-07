@@ -46,3 +46,15 @@ button{
   bottom: 0;
   z-index: -1;
 }
+.box{
+  border:1px solid var(--yellow);
+  border-radius: 25px;
+}
+.btn-yellow{
+  background-color: var(--yellow) !important;
+  color: var(--dark-purple) !important;
+}
+.btn-yellow:hover{
+  background-color: var(--gray-blue) !important;
+  color:var(--dark-purple) !important;
+}
