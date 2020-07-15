@@ -58,3 +58,10 @@ button{
   background-color: var(--gray-blue) !important;
   color:var(--dark-purple) !important;
 }
+.invisible{
+  display: none;
+}
+hr{
+  width: 85%;
+  border: 1px solid var(--yellow) !important;
+}
