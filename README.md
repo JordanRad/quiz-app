@@ -18,4 +18,4 @@ $ npm install
 ```
 $ npm start
 ```
-*The application will automaticaly start running on localhost:3000*
+*The application will automaticaly start on localhost:3000*
