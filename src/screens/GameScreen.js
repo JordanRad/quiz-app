@@ -10,7 +10,6 @@ import Loader from './components/Loader';
 import history from './../services/history';
 import Dialog from './components/Dialog';
 import { shuffle } from './functions/shuffle';
-import { Animated } from 'react-animated-css';
 import 'animate.css';
 class GameScreen extends React.Component {
   constructor() {
@@ -61,8 +60,7 @@ class GameScreen extends React.Component {
     this.setState({ isAskTheAudienceHelperActive: false })
     this.setState({ isPhoneAFriendHelperActive: false })
     if (this.state.currentQuestionIndex === 9 && this.state.questions[this.state.currentQuestionIndex].correct_answer === e.target.innerHTML) {
-      alert("Yoy win the game")
-      history.push('./')
+      history.push('./success')
     }
     console.log(this.state.questions[this.state.currentQuestionIndex]);
     if (this.state.questions[this.state.currentQuestionIndex].correct_answer === e.target.innerHTML) {
@@ -128,12 +126,9 @@ class GameScreen extends React.Component {
               open={this.state.isPhoneAFriendHelperActive}
               type="phone a friend" />
           </div>
-
-          <Animated animationIn="slideInUp" animationOut="fadeOut"  durationEnter={1000} isVisible={true}>
             <div className="mt-3">
               {AnswersComponent}
             </div>
-          </Animated>
         </div>
       );
     } else {

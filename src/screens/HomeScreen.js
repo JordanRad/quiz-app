@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
           params={particlesOptions}
         />
         <Heading/>
-        <button onClick={this.ToggleClick} className="btn btn-yellow">New Game</button>
+        <button onClick={this.ToggleClick} className="mt-3 btn btn-yellow">New Game</button>
       </div>
     );
   }
