@@ -10,6 +10,11 @@ git clone https://github.com/JordanRad/game.git
 
 * Install dependencies 
 ```
+cd game
+```
+
+* Install dependencies 
+```
 npm install
 ```
 
