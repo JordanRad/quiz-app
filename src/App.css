@@ -27,7 +27,13 @@
 .App-link {
   color: #61dafb;
 }
-
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.btn::after{
+  outline: none !important;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

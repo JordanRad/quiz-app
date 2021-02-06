@@ -53,10 +53,18 @@ button{
 .btn-yellow{
   background-color: var(--yellow) !important;
   color: var(--dark-purple) !important;
+  outline:none;  
 }
 .btn-yellow:hover{
   background-color: var(--gray-blue) !important;
   color:var(--dark-purple) !important;
+}
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.btn::after{
+  outline: none !important;
 }
 .invisible{
   display: none;

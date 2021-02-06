@@ -56,6 +56,7 @@ class GameScreen extends React.Component {
     this.setState({ isAskTheAudienceHelperActive: true })
   }
   Validate(e) {
+    e.preventDefault()
     this.setState({ areTwoAnswersShown: false })
     this.setState({ isAskTheAudienceHelperActive: false })
     this.setState({ isPhoneAFriendHelperActive: false })
@@ -84,7 +85,7 @@ class GameScreen extends React.Component {
         answers.push(currentQ.incorrect_answers[0])
         console.log(currentQ.correct_answer);
       }
-      AnswersComponent = answers.map((el, i) => <button key={i} onClick={this.Validate} className="btn btn-yellow m-2">{el}</button>)
+      AnswersComponent = answers.map((el, i) => <button key={i} onClick={this.Validate} className="btn col-xs-3 btn-yellow m-2">{el}</button>)
       return (
         <div className="App">
           <Partciles
@@ -126,7 +127,7 @@ class GameScreen extends React.Component {
               open={this.state.isPhoneAFriendHelperActive}
               type="phone a friend" />
           </div>
-            <div className="mt-3">
+            <div className="mt-3 row col-12 justify-content-center">
               {AnswersComponent}
             </div>
         </div>
