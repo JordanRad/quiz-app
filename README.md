@@ -8,7 +8,7 @@ Quiz game app by Jordan Radushev
 git clone https://github.com/JordanRad/game.git
 ```
 
-* Install dependencies 
+* Get into project's folder 
 ```
 cd game
 ```
