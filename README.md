@@ -1,4 +1,4 @@
-Quiz game app by Jordan Radushev 
+Quiz game app
 ===================
 
 ## Instructions to set-up the project locally:
