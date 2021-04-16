@@ -1,8 +1,8 @@
-Quiz game app by Jordan Radushev 
+Quiz game app
 ===================
 
-### Instructions to use on your local computer: ###
----------------
+## Instructions to set-up the project locally:
+
 * Clone the repo 
 ```
 git clone https://github.com/JordanRad/game.git
