@@ -54,17 +54,25 @@ button{
   background-color: var(--yellow) !important;
   color: var(--dark-purple) !important;
   outline:none;  
+/* style={{fontWeight:800,fontSize:"1.5em"} */
+  font-weight: 900 !important;
+  font-size: 1.5em !important;
 }
 .btn-yellow:hover{
   background-color: var(--gray-blue) !important;
   color:var(--dark-purple) !important;
 }
+.btn-yellow::after{
+  background-color: #2f3061 !important;
+}
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
+  background-color: var(--yellow) !important;
 }
 .btn::after{
   outline: none !important;
+  background-color: #2f3061 !important;
 }
 .invisible{
   display: none;

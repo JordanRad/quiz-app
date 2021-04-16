@@ -20,10 +20,12 @@ class HomeScreen extends React.Component {
           params={particlesOptions}
         />
         <Heading/>
-        <div className={"h1 white mb-5"}>Instructions:</div>
-        <div className={"h4 white"}>* click New Game and you have one correct answer to every single question
-        <br/>
-        * you have 3 helpers which could lead you to the right answer
+        <div className={"mt-5 f4 white text-uppercase"}>
+        <p className={"underline"}>Instructions:</p>
+        <p>click New Game and you have one correct answer to every single question
+        </p>
+        <p/>
+         you have 3 helpers which could lead you to the right answer
         </div>
         <button onClick={this.ToggleClick} className="mt-3 btn btn-lg btn-yellow">New Game</button>
       </div>

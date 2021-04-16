@@ -85,16 +85,18 @@ class GameScreen extends React.Component {
         answers.push(currentQ.incorrect_answers[0])
         console.log(currentQ.correct_answer);
       }
-      AnswersComponent = answers.map((el, i) => <button key={i} onClick={this.Validate} className="btn col-xs-3 btn-yellow m-2">{el}</button>)
+      AnswersComponent = answers.map((el, i) => <button key={i} onClick={this.Validate} className="btn btn-yellow ml-5 mr-5 mt-3 mb-3 btn-lg">{el}</button>)
       return (
         <div className="App">
           <Partciles
             className="particles"
             params={particlesOptions}
           />
-          <Heading />
           <div className="container-fluid row mt-2 m-0 justify-content-center">
-            <div className="col-2 m-4 br-4 box p-1 col-4">
+          <div className={"mt-4 mb-1 d-flex justify-content-center text-uppercase text-white f4"}>
+           <span>Question #2</span>
+          </div>
+            <div className="m-4 br-4 box p-3 ">
               <Helper
                 handle={this.Half}
                 content="50/50"
@@ -116,7 +118,7 @@ class GameScreen extends React.Component {
             className="f3 white m-3">
           </div>
 
-          <div className="container-fluid row mt-2 m-0 justify-content-center">
+          <div className="container-fluid row mt-2 m-0 d-flex justify-content-center">
             <Dialog
               answers={currentQ.incorrect_answers.concat(currentQ.correct_answer)}
               open={this.state.isAskTheAudienceHelperActive}
@@ -127,7 +129,8 @@ class GameScreen extends React.Component {
               open={this.state.isPhoneAFriendHelperActive}
               type="phone a friend" />
           </div>
-            <div className="mt-3 row col-12 justify-content-center">
+         
+            <div className="mt-3 d-flex justify-content-center flex-column">
               {AnswersComponent}
             </div>
         </div>

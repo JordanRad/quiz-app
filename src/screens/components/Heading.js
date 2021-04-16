@@ -7,7 +7,7 @@ class Heading extends React.Component {
         return (
             <div>
                 <div className="f1 white mb-2">Who wants to be a millionaire?</div>
-                <div className="f5 white text-uppercase">simple game app made by Jordan Radushev</div>
+                <div className="f5 white text-uppercase">simple quiz app made by Jordan Radushev</div>
             </div>
         );
     }
