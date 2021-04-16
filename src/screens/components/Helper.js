@@ -1,15 +1,4 @@
 import React from 'react';
-import 'tachyons';
-// class Helper extends React.Component {
-//     constructor(props) {
-//         super(props);
-//     }
-//     render() {
-//         console.log(this.props)
-//         return 
-//     }
-// }
-// export default Helper;
 const Helper = (props)=>{
     return(
         <button

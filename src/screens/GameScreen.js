@@ -2,7 +2,6 @@ import React from 'react';
 import '../App.css';
 import 'tachyons';
 import Partciles from 'react-particles-js';
-import Heading from './components/Heading';
 import axios from 'axios';
 import Helper from './components/Helper';
 import particlesOptions from './components/particlesOptions';
@@ -10,7 +9,6 @@ import Loader from './components/Loader';
 import history from './../services/history';
 import Dialog from './components/Dialog';
 import { shuffle } from './functions/shuffle';
-import 'animate.css';
 class GameScreen extends React.Component {
   constructor() {
     super();
@@ -94,7 +92,7 @@ class GameScreen extends React.Component {
           />
           <div className="container-fluid row mt-2 m-0 justify-content-center">
           <div className={"mt-4 mb-1 d-flex justify-content-center text-uppercase text-white f4"}>
-           <span>Question #2</span>
+           Question  &nbsp;<span style={{fontWeight:900}}># {this.state.currentQuestionIndex+1}</span>
           </div>
             <div className="m-4 br-4 box p-3 ">
               <Helper

@@ -1,7 +1,4 @@
 import React from 'react';
-import 'tachyons';
-
-
 class Heading extends React.Component {
     render() {
         return (
