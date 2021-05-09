@@ -11,6 +11,7 @@ You can see the deployed quiz app [**here**](https://clever-turing-f884e5.netlif
 ## Used Technologies
 - React JS
 - Bootstrap & custom CSS3
+- Particles JS
 - Axios
 - [Questions open API](https://opentdb.com/) 
  
