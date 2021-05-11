@@ -1,7 +1,7 @@
 import React from 'react';
 import Partciles from 'react-particles-js';
 import '../App.css';
-import particlesOptions from './components/particlesOptions';
+import particlesOptions from '../functions/particlesOptions';
 import Heading from './components/Heading';
 import history from './../services/history';
 const FinishGameScreen = () => {

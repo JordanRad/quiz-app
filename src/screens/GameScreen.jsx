@@ -4,7 +4,7 @@ import 'tachyons';
 import Partciles from 'react-particles-js';
 import axios from 'axios';
 import Helper from './components/Helper';
-import particlesOptions from './components/particlesOptions';
+import particlesOptions from '../functions/particlesOptions';
 import Loader from './components/Loader';
 import history from '../services/history';
 import Dialog from './components/Dialog';
@@ -263,7 +263,7 @@ const GameScreen = () => {
             type="phone a friend" />
         </div>
 
-        <div className="mt-3 justify-content-center flex-column">
+        <div className="mt-3 d-flex justify-content-center flex-column answers">
           {AnswersComponent}
         </div>
       </div>

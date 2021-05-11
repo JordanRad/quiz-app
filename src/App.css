@@ -6,7 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.answers{
+  align-items: center;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -15,14 +17,14 @@
 
 @media screen and (min-width: 992px) {
   .btn-yellow{
-    width:20%;
+    width:20% !important;
   }
 }
 
 /* On screens that are 600px wide or less, the background color is olive */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 600px) and (max-width: 991px) {
   .btn-yellow{
-    width:40%
+    width:40% !important;
   }
 }
 

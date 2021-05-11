@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import 'tachyons';
 import Partciles from 'react-particles-js';
-import particlesOptions from './components/particlesOptions';
+import particlesOptions from '../functions/particlesOptions';
 import history from '../services/history';
 import Heading from './components/Heading';
 
