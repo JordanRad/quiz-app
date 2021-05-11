@@ -13,6 +13,19 @@
   }
 }
 
+@media screen and (min-width: 992px) {
+  .btn-yellow{
+    width:20%;
+  }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (min-width: 600px) {
+  .btn-yellow{
+    width:40%
+  }
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -34,6 +47,7 @@
 .btn::after{
   outline: none !important;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

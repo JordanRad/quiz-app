@@ -1,7 +1,7 @@
 import React from 'react';
 import 'tachyons';
 import Partciles from 'react-particles-js';
-import particlesOptions from './../components/particlesOptions';
+import particlesOptions from './particlesOptions';
 import Heading from './Heading';
 
 class Loader extends React.Component {

@@ -6,9 +6,7 @@ import Heading from './components/Heading';
 import history from './../services/history';
 const FinishGameScreen = () => {
 
-    const onClickHandler = (e) => {
-        history.push('./game')
-    }
+    const onClickHandler = (e) => history.push('./game')
     return (<div className="App">
 
         <Partciles
