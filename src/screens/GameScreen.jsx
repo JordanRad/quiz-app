@@ -192,14 +192,19 @@ const GameScreen = () => {
     setIsAskTheAudienceHelperActive(false)
     setIsPhoneAFriendHelperActive(false)
 
+    //TODO: Separete function on game won hasWon()
     if (currentQuestionIndex === 14 && questions[currentQuestionIndex].correct_answer === e.target.innerHTML) {
       history.push('./success')
     }
+
     console.log(questions[currentQuestionIndex]);
+
+    //TODO: Separate function on giving a wrong answer isAnswerCorrect()
     if (questions[currentQuestionIndex].correct_answer === e.target.innerHTML) {
       let i = currentQuestionIndex
       setCurrentQuestionIndex(i + 1)
 
+      //TODO: pop up with appropriate message
     } else {
       alert(`Sorry, You failed at question number : ${currentQuestionIndex + 1}`)
       console.log(questions[currentQuestionIndex].correct_answer,e.target.innerHTML)
@@ -211,6 +216,8 @@ const GameScreen = () => {
     let currentQ = questions[currentQuestionIndex];
     let AnswersComponent;
     let answers = [];
+
+    //TODO: separate function outside the return statement
     if (areTwoAnswersShown === false) {
       answers = shuffle(currentQ.incorrect_answers.concat(currentQ.correct_answer));
       console.log(currentQ.correct_answer);
@@ -219,6 +226,8 @@ const GameScreen = () => {
       answers.push(currentQ.incorrect_answers[0])
       console.log(currentQ.correct_answer);
     }
+    //END TODO
+
     //AnswersComponent = answers.map((el, i) => <button key={i} onClick={validate} className="btn btn-yellow ml-5 mr-5 mt-3 mb-3 btn-lg">{el}</button>)
     AnswersComponent = answers.map((el,i)=><Answer key={i} validateHandler={validate} content={el} />)
     return (
@@ -253,6 +262,7 @@ const GameScreen = () => {
           className="f3 white m-3">
         </div>
 
+        {/* Invisible by default. Appear on respective helper click */}
         <div className="container-fluid row mt-2 m-0 d-flex justify-content-center">
           <Dialog
             answers={currentQ.incorrect_answers.concat(currentQ.correct_answer)}
