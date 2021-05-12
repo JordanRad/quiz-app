@@ -8,6 +8,7 @@ import particlesOptions from '../functions/particlesOptions';
 import Loader from './components/Loader';
 import history from '../services/history';
 import Dialog from './components/Dialog';
+import Answer from './components/Answer';
 import { shuffle } from '../functions/shuffle';
 
 // class GameScreen extends React.Component {
@@ -142,7 +143,6 @@ import { shuffle } from '../functions/shuffle';
 //   }
 // }
 
-
 const GameScreen = () => {
   const [questions, setQuestions] = useState([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -202,6 +202,7 @@ const GameScreen = () => {
 
     } else {
       alert(`Sorry, You failed at question number : ${currentQuestionIndex + 1}`)
+      console.log(questions[currentQuestionIndex].correct_answer,e.target.innerHTML)
       history.push("./")
     }
   }
@@ -218,7 +219,8 @@ const GameScreen = () => {
       answers.push(currentQ.incorrect_answers[0])
       console.log(currentQ.correct_answer);
     }
-    AnswersComponent = answers.map((el, i) => <button key={i} onClick={validate} className="btn btn-yellow ml-5 mr-5 mt-3 mb-3 btn-lg">{el}</button>)
+    //AnswersComponent = answers.map((el, i) => <button key={i} onClick={validate} className="btn btn-yellow ml-5 mr-5 mt-3 mb-3 btn-lg">{el}</button>)
+    AnswersComponent = answers.map((el,i)=><Answer key={i} validateHandler={validate} content={el} />)
     return (
       <div className="App">
         <Partciles
@@ -226,7 +228,7 @@ const GameScreen = () => {
           params={particlesOptions}
         />
         <div className="container-fluid row mt-2 m-0 justify-content-center">
-          <div className={"mt-4 mb-1 d-flex justify-content-center text-uppercase text-white f4"}>
+          <div className="mt-4 mb-1 d-flex justify-content-center text-uppercase text-white f4">
             Question  &nbsp;<span style={{ fontWeight: 900 }}># {currentQuestionIndex + 1}</span>
           </div>
           <div className="m-4 br-4 box p-3 ">
