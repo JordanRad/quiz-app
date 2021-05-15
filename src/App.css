@@ -50,6 +50,9 @@
   outline: none !important;
 }
 
+.right-answer{
+  transform: scale(1.1);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
